@@ -1,0 +1,2 @@
+# Runtime dependencies for Mira-inspired calculator
+# (Tkinter ships with Python, so no external packages are required yet.)
