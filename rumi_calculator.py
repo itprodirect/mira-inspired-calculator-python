@@ -1,24 +1,26 @@
 import tkinter as tk
 
-class MiraCalculator(tk.Tk):
+
+class RumiCalculator(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("Mira // Demon Hunter Calc")
-        self.configure(bg="#0b0213")
+
+        self.title("Rumi // Demon Hunter Calc")
+        self.configure(bg="#050814")  # dark concert stage
         self.resizable(False, False)
 
-        # Color palette (Mira-inspired: neon magenta + dark stage)
-        self.bg = "#0b0213"
-        self.display_bg = "#1a0824"
-        self.display_fg = "#fdf6ff"
-        self.accent = "#ff2e9f"
-        self.accent_secondary = "#5ef2ff"
-        self.button_bg = "#24102f"
-        self.button_hover = "#31183f"
-        self.op_bg = "#3a1035"
-        self.op_fg = "#ffb347"
-        self.equal_bg = "#ff2e9f"
-        self.equal_fg = "#0b0213"
+        # Rumi-inspired palette (pink + aqua neon)
+        self.bg = "#050814"
+        self.display_bg = "#150d29"
+        self.display_fg = "#fef7ff"
+        self.accent = "#ff6ad5"           # Rumi pink
+        self.accent_secondary = "#6af2ff"  # aqua highlight
+        self.button_bg = "#241236"
+        self.button_hover = "#341b4a"
+        self.op_bg = "#3a163b"
+        self.op_fg = "#ffd37a"
+        self.equal_bg = "#ff6ad5"
+        self.equal_fg = "#050814"
 
         self.expression = ""
 
@@ -26,13 +28,13 @@ class MiraCalculator(tk.Tk):
         self._bind_keys()
 
     def _build_ui(self):
-        # Header – gives it that “idol tech” vibe
+        # Header – this MUST say RUMI now
         header = tk.Label(
             self,
-            text="MIRA // DEMON HUNTER CALC",
+            text="RUMI // DEMON HUNTER CALC",
             bg=self.bg,
             fg=self.accent_secondary,
-            font=("Segoe UI", 11, "bold")
+            font=("Segoe UI", 11, "bold"),
         )
         header.pack(padx=16, pady=(12, 4), anchor="w")
 
@@ -47,7 +49,7 @@ class MiraCalculator(tk.Tk):
             bd=0,
             relief="flat",
             justify="right",
-            insertbackground=self.display_fg
+            insertbackground=self.display_fg,
         )
         display.pack(fill="x", padx=16, pady=(0, 16), ipady=10)
 
@@ -55,24 +57,21 @@ class MiraCalculator(tk.Tk):
         btn_frame = tk.Frame(self, bg=self.bg)
         btn_frame.pack(padx=16, pady=(0, 16))
 
-        # Layout: C in top-left, ops on the right, wide 0 on bottom
         buttons = [
-            ["C", "",  "",  "/"],
+            ["C", "", "", "/"],
             ["7", "8", "9", "*"],
             ["4", "5", "6", "-"],
             ["1", "2", "3", "+"],
-            ["0", "0", ".", "="],  # first "0" is styled as wide
+            ["0", "0", ".", "="],  # first 0 is wide
         ]
 
         for r, row in enumerate(buttons):
             for c, char in enumerate(row):
                 if char == "":
-                    # spacer cell
                     spacer = tk.Label(btn_frame, text="", bg=self.bg)
                     spacer.grid(row=r, column=c, padx=4, pady=4, sticky="nsew")
                     continue
 
-                # Decide button style
                 if char == "C":
                     bg = self.op_bg
                     fg = self.accent_secondary
@@ -96,28 +95,30 @@ class MiraCalculator(tk.Tk):
                     activeforeground=fg,
                     bd=0,
                     relief="flat",
-                    font=("Segoe UI", 14, "bold")
+                    font=("Segoe UI", 14, "bold"),
                 )
 
-                # Make the first 0 double width
                 if r == 4 and c == 0:
-                    btn.grid(row=r, column=c, columnspan=2, padx=4, pady=4, sticky="nsew")
+                    btn.grid(
+                        row=r,
+                        column=c,
+                        columnspan=2,
+                        padx=4,
+                        pady=4,
+                        sticky="nsew",
+                    )
                 elif r == 4 and c == 1:
-                    # skip, handled by col span
                     continue
                 else:
                     btn.grid(row=r, column=c, padx=4, pady=4, sticky="nsew")
 
-        # Make grid responsive
-        cols = 4
-        rows = 5
+        cols, rows = 4, 5
         for i in range(cols):
             btn_frame.columnconfigure(i, weight=1)
         for i in range(rows):
             btn_frame.rowconfigure(i, weight=1)
 
     def _bind_keys(self):
-        # Basic keyboard support
         for char in "0123456789+-*/.":
             self.bind(char, self.on_key)
         self.bind("<Return>", self.on_key)
@@ -134,7 +135,6 @@ class MiraCalculator(tk.Tk):
             self._evaluate()
             return
 
-        # Build the expression string
         if self.display_var.get() == "0" and char not in {".", "+", "-", "*", "/"}:
             self.expression = char
         else:
@@ -167,7 +167,6 @@ class MiraCalculator(tk.Tk):
 
     def _evaluate(self):
         try:
-            # Using eval for a quick local calculator; for untrusted input, replace with a real parser
             result = eval(self.expression or "0")
             self.display_var.set(str(result))
             self.expression = str(result)
@@ -175,6 +174,7 @@ class MiraCalculator(tk.Tk):
             self.display_var.set("Error")
             self.expression = ""
 
+
 if __name__ == "__main__":
-    app = MiraCalculator()
+    app = RumiCalculator()
     app.mainloop()
