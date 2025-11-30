@@ -21,29 +21,43 @@
     <!-- MAIN 3-COLUMN LAYOUT -->
     <div class="main-layout">
 
-      <!-- LEFT PLAYLIST -->
+      <!-- LEFT PANEL: Mira headshot + playlist -->
       <section class="spotify-section left">
+        <div class="mira-hero">
+          <img
+            src="assets/mira-headshot.jpg"
+            alt="Mira demon hunter headshot"
+            class="mira-headshot"
+          />
+        </div>
+
         <h2 class="spotify-title">Rumi's Focus Playlist</h2>
         <p class="spotify-subtitle">Tracks to hunt demons, crush math, and stay in flow.</p>
 
         <div class="spotify-embeds">
-          <iframe style="border-radius:12px"
-            src="https://open.spotify.com/embed/track/5sBDrrtLGbV64QJnEqfjer?utm_source=generator"
-            width="100%" height="180" frameborder="0"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy">
-          </iframe>
+          <div class="spotify-card">
+            <iframe
+              style="border-radius:12px"
+              src="https://open.spotify.com/embed/track/5sBDrrtLGbV64QJnEqfjer?utm_source=generator"
+              width="100%" height="180" frameborder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy">
+            </iframe>
+          </div>
 
-          <iframe style="border-radius:12px"
-            src="https://open.spotify.com/embed/track/1rKQjUhF9zFJmuUotr3VkV?utm_source=generator"
-            width="100%" height="180" frameborder="0"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy">
-          </iframe>
+          <div class="spotify-card">
+            <iframe
+              style="border-radius:12px"
+              src="https://open.spotify.com/embed/track/1rKQjUhF9zFJmuUotr3VkV?utm_source=generator"
+              width="100%" height="180" frameborder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy">
+            </iframe>
+          </div>
         </div>
       </section>
 
-      <!-- CENTER CALCULATOR (UNCHANGED) -->
+      <!-- CENTER CALCULATOR -->
       <main class="calc">
         <div id="display" class="display">0</div>
 
@@ -84,22 +98,36 @@
         </div>
       </main>
 
-      <!-- RIGHT PLAYLIST -->
+      <!-- RIGHT PANEL: Mira action + playlist -->
       <section class="spotify-section right">
-        <div class="spotify-embeds">
-          <iframe style="border-radius:12px"
-            src="https://open.spotify.com/embed/track/3RXUgPNIbUgFxsDWuBQEt6?utm_source=generator"
-            width="100%" height="180" frameborder="0"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy">
-          </iframe>
+        <div class="mira-side-hero">
+          <img
+            src="assets/mira-action.jpg"
+            alt="Mira in action"
+            class="mira-action"
+          />
+        </div>
 
-          <iframe style="border-radius:12px"
-            src="https://open.spotify.com/embed/track/1CPZ5BxNNd0n0nF4Orb9JS?utm_source=generator"
-            width="100%" height="180" frameborder="0"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy">
-          </iframe>
+        <div class="spotify-embeds">
+          <div class="spotify-card">
+            <iframe
+              style="border-radius:12px"
+              src="https://open.spotify.com/embed/track/3RXUgPNIbUgFxsDWuBQEt6?utm_source=generator"
+              width="100%" height="180" frameborder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy">
+            </iframe>
+          </div>
+
+          <div class="spotify-card">
+            <iframe
+              style="border-radius:12px"
+              src="https://open.spotify.com/embed/track/1CPZ5BxNNd0n0nF4Orb9JS?utm_source=generator"
+              width="100%" height="180" frameborder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy">
+            </iframe>
+          </div>
         </div>
       </section>
 

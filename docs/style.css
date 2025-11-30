@@ -10,7 +10,9 @@
   --btn-hover: #3d3d4d;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -25,7 +27,7 @@ body {
 
 .app {
   width: 100%;
-  max-width: 1400px;  /* give the layout more total width */
+  max-width: 1400px;  /* wider for 3-column layout + art */
   background-color: var(--panel-bg);
   display: flex;
   flex-direction: column;
@@ -59,7 +61,7 @@ body {
   color: var(--accent-red);
 }
 
-/* --- MAIN 3-COLUMN LAYOUT --- */
+/* MAIN 3-COLUMN LAYOUT */
 .main-layout {
   display: grid;
   grid-template-columns: 320px minmax(420px, 1fr) 320px;
@@ -178,7 +180,7 @@ body {
   grid-column: span 2;
 }
 
-/* --- SPOTIFY SECTIONS --- */
+/* SPOTIFY SECTIONS + MIRA ART */
 .spotify-section {
   background: var(--panel-bg);
   padding: 12px;
@@ -209,12 +211,60 @@ body {
   gap: 10px;
 }
 
-.spotify-embeds iframe {
-  width: 100%;
-  border: none;
+/* Glow container around each Spotify iframe */
+.spotify-card {
+  border-radius: 18px;
+  padding: 4px;
+  background: radial-gradient(circle at top left,
+    rgba(125,95,255,0.45),
+    rgba(106,242,255,0.15));
+  box-shadow: 0 0 0 rgba(179,136,255,0.0);
+  transition: transform 0.18s ease-out,
+              box-shadow 0.18s ease-out,
+              background 0.18s ease-out;
 }
 
-/* --- MOBILE / TABLET FALLBACK --- */
+.spotify-card iframe {
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  display: block;
+}
+
+.spotify-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 18px rgba(179,136,255,0.9);
+  background: radial-gradient(circle at top left,
+    rgba(125,95,255,0.9),
+    rgba(106,242,255,0.35));
+}
+
+/* Mira images */
+.mira-hero {
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.mira-headshot {
+  width: 100%;
+  max-width: 180px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-purple);
+  box-shadow: 0 0 18px rgba(179,136,255,0.9);
+}
+
+.mira-side-hero {
+  margin-bottom: 8px;
+}
+
+.mira-action {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(125,95,255,0.8);
+  object-fit: cover;
+}
+
+/* MOBILE / TABLET FALLBACK */
 @media (max-width: 900px) {
   .main-layout {
     grid-template-columns: 1fr;
@@ -227,5 +277,9 @@ body {
 
   .calc {
     order: 1;
+  }
+
+  .spotify-section {
+    margin-top: 12px;
   }
 }
